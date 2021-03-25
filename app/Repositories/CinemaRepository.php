@@ -12,13 +12,13 @@ class CinemaRepository implements CinemaRepositoryInterface{
 
     public function index(){
         $movies = Movie::all();
-        return view('home')->with('movies',$movies);
+        return $movies;
         
     }
 
     public function viewMovies(){
         $movies = Movie::all();
-        return view('welcome')->with('movies',$movies);
+        return $movies;
         
     }
     
@@ -44,6 +44,7 @@ class CinemaRepository implements CinemaRepositoryInterface{
             $showtime->movie_id = $validated['movie_id'];
             $showtime->save();
     
+            
     
         }catch(Exception $e){
             

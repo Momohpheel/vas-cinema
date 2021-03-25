@@ -14,27 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\CinemaController::class, 'viewMovies']);
-
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
-
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
-
-Route::get('/movies', function () {
-    return view('movies');
-});
-
-Route::get('/movies/showtime', function () {
-    return view('showtime');
-});
-
-Route::get('/add-movies', function () {
-    return view('addmovies');
-});
-
+Route::get('/movie/showtime', [App\Http\Controllers\CinemaController::class, 'view']);
+Route::get('/add-movies', [App\Http\Controllers\CinemaController::class, 'addMovies']);
+Route::get('/home', [App\Http\Controllers\CinemaController::class, 'index'])->name('home');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\CinemaController::class, 'index'])->name('home');

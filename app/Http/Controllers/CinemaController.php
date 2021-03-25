@@ -7,17 +7,28 @@ use App\Models\Cinema;
 use App\Models\Movie;
 use App\Models\Showtime;
 use App\Models\User;
+use App\Repositories\CinemaRepositoryInterface;
 
 
 
 class CinemaController extends Controller
 {
 
+    protected $repository;
+
+    /**
+     * PostController constructor.
+     *
+     * @param CinemaRepositoryInterface $post
+     */
+    public function __construct(CinemaRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
 
     public function index(){
-        $movies = Movie::all();
+        $movies = $this->repository->index();
         return view('home')->with('movies',$movies);
-        
     }
    
     /**
@@ -25,7 +36,7 @@ class CinemaController extends Controller
      * 
      */
     public function viewMovies(){
-        $movies = Movie::all();
+        $movies = $this->repository->index();
         return view('welcome')->with('movies',$movies);
         
     }
@@ -35,8 +46,8 @@ class CinemaController extends Controller
      * 
      */
     public function view($id){
-        $showtime = Showtime::where('movie_id', $id)->with(['cinema','movie'])->get();
-        return $showtime;
+        $movies = $this->repository->view($id);
+        return view('movies')->with('movies',$movies);
     }
 
     /**
@@ -44,29 +55,8 @@ class CinemaController extends Controller
      * 
      */
     public function addMovies(Request $request){
-
-        try{
-
-            $validated = $request->validate([
-                'time' => 'required|string',
-                'cinema_id' => 'required',
-                'movie_id' => 'required' 
-            ]);
-    
-            $showtime = new Showtime;
-            $showtime->time = $validated['time'];
-            $showtime->cinema_id = $validated['cinema_id'];
-            $showtime->movie_id = $validated['movie_id'];
-            $showtime->save();
-
-
-        }catch(Exception $e){
-            
-        }
-        
-
-
-    
+        $movies = $this->repository->addMovies($request);
+        return redirect('/home');
     }
 
 }

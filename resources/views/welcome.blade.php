@@ -95,21 +95,7 @@
                     </div>
                   
                 @endforeach 
-                    {{-- <div class="col-sm one">
-                    <img src="{{url('storage/images/sample.jpg')}}" class="image" width="100%" />
-                        <div class="middle">
-                            <div class="text">John Doe</div>
-                            <div class="texts">John Doe</div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm one">
-                        <img src="{{url('storage/images/sample.jpg')}}" class="image" width="100%" />
-                        <div class="middle">
-                            <div class="text">John Doe</div>
-                            <div class="texts">John Doe</div>
-                        </div>
-                    </div> --}}
+                   
                     
                 </div>
                 </div>

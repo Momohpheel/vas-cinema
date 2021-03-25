@@ -103,13 +103,14 @@
                                     </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">
+                    
+                            <button type="submit" class="btn btn-primary float-right btn-lng">
                                     {{ __('Add Movie') }}
                             </button>
 
-                                
                               
                         </form>
+                        
 
     </div>
     </div>

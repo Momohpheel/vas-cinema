@@ -12,9 +12,14 @@ use App\Models\User;
 
 class CinemaController extends Controller
 {
-    public function login(){}
-    public function register(){}
 
+
+    public function index(){
+        $movies = Movie::all();
+        return view('home')->with('movies',$movies);
+        
+    }
+   
     /**
      * 
      * 
@@ -30,11 +35,7 @@ class CinemaController extends Controller
      * 
      */
     public function view($id){
-        // $movies = Movie::all();
-        // foreach($movies as $movie){
-            $showtime = Showtime::where('movie_id', $id)->with(['cinema','movie'])->get();
-        //}
-
+        $showtime = Showtime::where('movie_id', $id)->with(['cinema','movie'])->get();
         return $showtime;
     }
 

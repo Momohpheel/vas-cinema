@@ -33,20 +33,14 @@
             </ul>
         </div>
     <div class="card-body">
-        <form method="POST" action="/add-movies">
+        <form method="POST" action="{{ route('movie') }}">
                             @csrf
 
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Movie') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="text" name="movie" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input id="movie" type="text" name="movie" class="form-control"  required  autofocus>
                                 </div>
                             </div>
 
@@ -57,13 +51,7 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                                 <div class="col-md-6">
-                                    <textarea id="email" type="text" name="desc" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus></textarea>
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <textarea id="desc" type="text" name="desc" class="form-control"  required autofocus></textarea>
                                 </div>
                             </div>
 
@@ -76,11 +64,7 @@
                                     <div class="form-group">
                                         <input type="file" class="form-control-file" id="exampleFormControlFile1">
                                     </div>
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                   
                                 </div>
                             </div>
 
@@ -90,10 +74,10 @@
                                 
                                         <div class="col-md-6">
                                            
-                                            <select id="inputState" class="form-control">
+                                            <select name="cinema_id" id="inputState" class="form-control">
                                                 <option selected>Choose...</option>
                                                 @foreach ( $cinemas as $cinema )
-                                                    <option name="cinema_id" value="{{$cinema->id}}">{{$cinema->name.', '.$cinema->location}}</option>
+                                                    <option value="{{$cinema->id}}">{{$cinema->name.', '.$cinema->location}}</option>
                                                 @endforeach
                                                 
                                             </select>
@@ -112,7 +96,7 @@
                             </button>
 
                               
-                        </form>
+        </form>
                         
 
     </div>

@@ -58,6 +58,7 @@ class CinemaController extends Controller
      * 
      */
     public function addMovies(Request $request){
+    
         $movies = $this->repository->addMovies($request);
         return redirect('/home');
     }

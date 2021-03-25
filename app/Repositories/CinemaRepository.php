@@ -42,6 +42,7 @@ class CinemaRepository implements CinemaRepositoryInterface{
                 'time' => 'required',
                 'cinema_id' => 'required',
             ]);
+            
             $movie = new Movie;
             $movie->name = $validated['movie'];
             $movie->save();
@@ -55,6 +56,7 @@ class CinemaRepository implements CinemaRepositoryInterface{
             
     
         }catch(Exception $e){
+            return $e->getMessage();
             
         }
         

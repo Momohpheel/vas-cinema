@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Illuminate\Support\ServiceProvider;
 
-class BackendServiceProvider extends ServiceProvider
+class CinemaServiceProvider extends ServiceProvider
 {
 
     public function register()

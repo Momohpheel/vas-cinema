@@ -3,6 +3,7 @@
 
 namespace App\Repositories;
 
+use Illuminate\Http\Request;
 interface CinemaRepositoryInterface{
 
     public function index();
@@ -14,6 +15,6 @@ interface CinemaRepositoryInterface{
     public function view($id);
     
     
-    public function addMovies();
+    public function addMovies(Request $request);
     
 }

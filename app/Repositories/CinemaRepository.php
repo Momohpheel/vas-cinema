@@ -2,8 +2,11 @@
 
 
 namespace App\Repositories;
-
-use App\Repositories\CinemaRepositoryInterface;
+use App\Models\Cinema;
+use App\Models\Movie;
+use App\Models\Showtime;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class CinemaRepository implements CinemaRepositoryInterface{
 

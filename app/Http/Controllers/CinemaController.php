@@ -16,11 +16,7 @@ class CinemaController extends Controller
 
     protected $repository;
 
-    /**
-     * PostController constructor.
-     *
-     * @param CinemaRepositoryInterface $post
-     */
+    
     public function __construct(CinemaRepositoryInterface $repository)
     {
         $this->repository = $repository;

@@ -33,14 +33,14 @@
             </ul>
         </div>
     <div class="card-body">
-        <form method="POST" action="">
+        <form method="POST" action="/add-movies">
                             @csrf
 
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Movie') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                    <input id="email" type="text" name="movie" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                                 <div class="col-md-6">
-                                    <textarea id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus></textarea>
+                                    <textarea id="email" type="text" name="desc" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus></textarea>
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -92,12 +92,15 @@
                                            
                                             <select id="inputState" class="form-control">
                                                 <option selected>Choose...</option>
-                                                <option>...</option>
+                                                @foreach ( $cinemas as $cinema )
+                                                    <option name="cinema_id" value="{{$cinema->id}}">{{$cinema->name.', '.$cinema->location}}</option>
+                                                @endforeach
+                                                
                                             </select>
                                         </div>
 
                                         <div class="col-md-6">
-                                            <input type="datetime-local" width="20px" class="form-control" id="inputCity">
+                                            <input type="datetime-local" width="20px" name="time" class="form-control" id="inputCity">
                                         </div>
                                         
                                     </div>

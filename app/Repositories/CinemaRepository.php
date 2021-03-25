@@ -27,21 +27,29 @@ class CinemaRepository implements CinemaRepositoryInterface{
         return $showtime;
     }
     
+    public function getAddMoviesPage(){
+        $cinemas = Cinema::all();
+        return $cinemas;
+    }
 
     public function addMovies(Request $request){
     
         try{
     
             $validated = $request->validate([
-                'time' => 'required|string',
+                'movie' => 'required|string',
+                'desc' => 'required|string',
+                'time' => 'required',
                 'cinema_id' => 'required',
-                'movie_id' => 'required' 
             ]);
-    
+            $movie = new Movie;
+            $movie->name = $validated['movie'];
+            $movie->save();
+
             $showtime = new Showtime;
             $showtime->time = $validated['time'];
             $showtime->cinema_id = $validated['cinema_id'];
-            $showtime->movie_id = $validated['movie_id'];
+            $showtime->movie_id = $movie->id;
             $showtime->save();
     
             

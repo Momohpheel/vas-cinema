@@ -46,6 +46,13 @@ class CinemaController extends Controller
         return view('movies')->with('movies',$movies);
     }
 
+
+    public function getAddMoviesPage(){
+        $cinemas = $this->repository->getAddMoviesPage();
+        return view('addmovies')->with('cinemas', $cinemas);
+    }
+
+
     /**
      * 
      * 

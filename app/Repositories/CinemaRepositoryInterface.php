@@ -14,6 +14,7 @@ interface CinemaRepositoryInterface{
     
     public function view($id);
     
+    public function getAddMoviesPage();
     
     public function addMovies(Request $request);
     

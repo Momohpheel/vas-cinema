@@ -57,7 +57,7 @@ class CinemaRepository implements CinemaRepositoryInterface{
                 $showtime->time = $validated['time'][$i];
                 $showtime->cinema = $validated['cinema'][$i];
                 $showtime->movie_id = $movie->id;
-                $show = $showtime->save();
+                $show[] = $showtime->save();
 
             }
 

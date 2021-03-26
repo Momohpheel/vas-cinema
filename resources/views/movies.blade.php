@@ -44,13 +44,16 @@
         <div class="row">
             <div class="col-sm">
                 <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                    <img src="{{url('storage/images/sample.jpg')}}" width="100%" />
+                    
+                    <img src="{{$movies[0]->movie->image}}" width="100%" />
+                    
                     <div class="ml-6">
                         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                             {{$movies[0]->movie->name}}<br/>
                             {{$movies[0]->movie->desc}}
                         </div>
                     </div>
+                    
                 </div>
             </div>
             <div class="col-sm">

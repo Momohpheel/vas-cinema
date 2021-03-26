@@ -84,7 +84,7 @@
                 <div class="container">
 
                 <div class="row">
-                @if($movies)
+                @if(count($movies) > 0)
                     @foreach($movies as $movie)
                         <div class="col-sm-4 one">
                             <img src="{{$movie->image}}" class="image" width="100%" />

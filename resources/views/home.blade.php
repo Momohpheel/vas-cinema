@@ -65,7 +65,11 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
+                        <a href="{{ url('/home') }}" style="background-color: black; padding: 15px 14px; text-decoration: none; color: white;" class="text-sm text-gray-700 underline">Home</a>
+                        <a href="{{ url('/add-movies') }}" class="text-sm text-gray-700 underline" 
+                        style="background-color: black; padding: 15px 14px; text-decoration: none; color: white;">
+                        ADD MOVIES
+                        </a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
 
@@ -127,7 +131,7 @@
                             </svg>
 
                             <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
+                                
                             </a>
 
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
@@ -135,13 +139,13 @@
                             </svg>
 
                             <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
+                                
                             </a>
                         </div>
                     </div>
 
                     <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                        Momoh Philip J.
                     </div>
                 </div>
             </div>

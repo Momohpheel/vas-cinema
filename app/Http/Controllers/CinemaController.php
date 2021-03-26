@@ -8,7 +8,7 @@ use App\Models\Movie;
 use App\Models\Showtime;
 use App\Models\User;
 use App\Repositories\CinemaRepositoryInterface;
-
+use Illuminate\Support\Facades\Auth;
 
 
 class CinemaController extends Controller
@@ -42,14 +42,20 @@ class CinemaController extends Controller
      * 
      */
     public function view($id){
+       
         $movies = $this->repository->view($id);
         return view('movies')->with('movies',$movies);
     }
 
 
     public function getAddMoviesPage(){
-        $cinemas = $this->repository->getAddMoviesPage();
-        return view('addmovies')->with('cinemas', $cinemas);
+        if (Auth::check()) {
+            $cinemas = $this->repository->getAddMoviesPage();
+            return view('addmovies')->with('cinemas', $cinemas);
+        }else{
+            return redirect('/login');
+        }
+      
     }
 
 
@@ -58,9 +64,12 @@ class CinemaController extends Controller
      * 
      */
     public function addMovies(Request $request){
-    
-        $movies = $this->repository->addMovies($request);
-        return redirect('/home');
+        if (Auth::check()) {
+            $movies = $this->repository->addMovies($request);
+            return redirect('/home');
+        }else{
+            return redirect('/login');
+        }
     }
 
 }

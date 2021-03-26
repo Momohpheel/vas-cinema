@@ -67,8 +67,9 @@
                                    
                                 </div>
                             </div>
-
+ @foreach ( $cinemas as $cinema )
                             <div class="form-group row">
+                               
                                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Location') }}</label>
                                     <div class="form-row">
                                 
@@ -86,9 +87,12 @@
                                         <div class="col-md-6">
                                             <input type="datetime-local" width="20px" name="time" class="form-control" id="inputCity">
                                         </div>
-                                        
+                                
+
                                     </div>
+
                             </div>
+                            @endforeach
 
                     
                             <button type="submit" class="btn btn-primary float-right btn-lng">

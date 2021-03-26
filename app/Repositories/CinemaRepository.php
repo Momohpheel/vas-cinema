@@ -39,19 +39,22 @@ class CinemaRepository implements CinemaRepositoryInterface{
             $validated = $request->validate([
                 'movie' => 'required|string',
                 'desc' => 'required|string',
-                'time' => 'required',
-                'cinema_id' => 'required',
+                'time.*' => 'required|array',
+                'cinema_id.*' => 'required|array',
             ]);
             
             $movie = new Movie;
             $movie->name = $validated['movie'];
             $movie->save();
 
-            $showtime = new Showtime;
-            $showtime->time = $validated['time'];
-            $showtime->cinema_id = $validated['cinema_id'];
-            $showtime->movie_id = $movie->id;
-            $showtime->save();
+            for($i = 0; $i <= count($validated['time']); $i++){
+                $showtime = new Showtime;
+                $showtime->time = $validated['time'][$i];
+                $showtime->cinema_id = $validated['cinema_id'][$i];
+                $showtime->movie_id = $movie->id;
+                $showtime->save();
+
+            }
     
             
     

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\CinemaController::class, 'viewMovies']);
-Route::get('/movie/showtime/{id}', [App\Http\Controllers\CinemaController::class, 'view']);
+Route::get('/movie/showtime/{id}', [App\Http\Controllers\CinemaController::class, 'view'])->name('show');
 Route::get('/add-movies', [App\Http\Controllers\CinemaController::class, 'getAddMoviesPage']);
 Route::post('/add-movies', [App\Http\Controllers\CinemaController::class, 'addMovies'])->name('movie');
 Route::get('/home', [App\Http\Controllers\CinemaController::class, 'index'])->name('home');

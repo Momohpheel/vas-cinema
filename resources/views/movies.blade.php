@@ -47,7 +47,8 @@
                     <img src="{{url('storage/images/sample.jpg')}}" width="100%" />
                     <div class="ml-6">
                         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            Laravel 
+                            {{$movies[0]->movie->name}}<br/>
+                            {{$movies[0]->movie->desc}}
                         </div>
                     </div>
                 </div>
@@ -57,7 +58,13 @@
                     <th>#</th>
                     <th>Location</th>
                     <th>Showtime</th>
-                    <tr></tr>
+                    @foreach($movies as $movie)
+                        <tr>
+                            <td>{{$movie->id}}</td>
+                            <td>{{$movie->cinema->name.', '.$movie->cinema->location}}</td>
+                            <td>{{$movie->time}}</td>
+                        </tr>
+                    @endforeach
                 </table>
             </div>
         </div>

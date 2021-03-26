@@ -33,7 +33,7 @@
             </ul>
         </div>
     <div class="card-body">
-        <form method="POST" action="{{ route('movie') }}">
+        <form method="POST" action="{{ route('movie') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group row">
@@ -62,12 +62,13 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                        <input type="file" name="image" class="form-control-file">
                                     </div>
                                    
                                 </div>
                             </div>
- @foreach ( $cinemas as $cinema )
+
+                        @foreach ( $cinemas as $cinema )
                             <div class="form-group row">
                                
                                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Location') }}</label>
@@ -75,7 +76,7 @@
                                 
                                         <div class="col-md-6">
                                            
-                                            <select name="cinema_id" id="inputState" class="form-control">
+                                            <select name="cinema_id[]" id="inputState" class="form-control">
                                                 <option selected>Choose...</option>
                                                 @foreach ( $cinemas as $cinema )
                                                     <option value="{{$cinema->id}}">{{$cinema->name.', '.$cinema->location}}</option>
@@ -85,14 +86,14 @@
                                         </div>
 
                                         <div class="col-md-6">
-                                            <input type="datetime-local" width="20px" name="time" class="form-control" id="inputCity">
+                                            <input type="datetime-local" width="20px" name="time[]" class="form-control" id="inputCity">
                                         </div>
                                 
 
                                     </div>
 
                             </div>
-                            @endforeach
+                        @endforeach
 
                     
                             <button type="submit" class="btn btn-primary float-right btn-lng">

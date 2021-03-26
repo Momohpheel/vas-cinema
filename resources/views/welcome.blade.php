@@ -86,10 +86,10 @@
                 <div class="row">
                 @foreach($movies as $movie)
                     <div class="col-sm-4 one">
-                        <img src="{{url('storage/images/sample.jpg')}}" class="image" width="100%" />
+                        <img src="{{$movie->image}}" class="image" width="100%" />
                         <div class="middle">
-                            <div class="text">John Doe</div>
-                            <a href="/movie/showtime/{{$movie->id}}"><div class="texts">John Doe</div></a>
+                            <div class="text">{{$movie->name}}</div>
+                            <a href="/movie/showtime/{{$movie->id}}"><div class="texts">Show Details</div></a>
                         </div>
                           <br/>
                     </div>

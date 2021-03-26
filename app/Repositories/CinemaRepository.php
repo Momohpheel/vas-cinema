@@ -35,19 +35,25 @@ class CinemaRepository implements CinemaRepositoryInterface{
     public function addMovies(Request $request){
     
         try{
-    
+            
             $validated = $request->validate([
                 'movie' => 'required|string',
                 'desc' => 'required|string',
-                'time.*' => 'required|array',
-                'cinema_id.*' => 'required|array',
+                'time.*' => 'required',
+                'cinema_id.*' => 'required',
+                'image' => 'required|image|mimes:jpeg,png,jpg'
             ]);
-            
+       
+
+           
             $movie = new Movie;
             $movie->name = $validated['movie'];
+            $movie->desc = $validated['desc'];
+            $response = cloudinary()->upload(request()->file('image')->getRealPath())->getSecurePath();
+            $movie->image = $response;
             $movie->save();
 
-            for($i = 0; $i <= count($validated['time']); $i++){
+            for($i = 0; $i < count($validated['time']); $i++){
                 $showtime = new Showtime;
                 $showtime->time = $validated['time'][$i];
                 $showtime->cinema_id = $validated['cinema_id'][$i];

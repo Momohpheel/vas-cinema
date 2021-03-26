@@ -60,7 +60,7 @@
                     <th>Showtime</th>
                     @foreach($movies as $movie)
                         <tr>
-                            <td>{{$movie->id}}</td>
+                            <td></td>
                             <td>{{$movie->cinema->name.', '.$movie->cinema->location}}</td>
                             <td>{{$movie->time}}</td>
                         </tr>

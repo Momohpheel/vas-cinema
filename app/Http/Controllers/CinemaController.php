@@ -23,8 +23,12 @@ class CinemaController extends Controller
     }
 
     public function index(){
-        $movies = $this->repository->index();
-        return view('home')->with('movies',$movies);
+        if (Auth::check()) {
+            $movies = $this->repository->index();
+            return view('home')->with('movies',$movies);
+        }else{
+            return redirect('/login');
+        }
     }
    
     /**

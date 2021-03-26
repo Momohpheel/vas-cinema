@@ -23,13 +23,12 @@ class CinemaRepository implements CinemaRepositoryInterface{
     }
     
     public function view($id){
-        $showtime = Showtime::where('movie_id', $id)->with(['cinema','movie'])->get();
+        $showtime = Showtime::where('movie_id', $id)->with('movie')->get();
         return $showtime;
     }
     
     public function getAddMoviesPage(){
-        $cinemas = Cinema::all();
-        return $cinemas;
+      return view('addmovies');
     }
 
     public function addMovies(Request $request){
@@ -40,7 +39,7 @@ class CinemaRepository implements CinemaRepositoryInterface{
                 'movie' => 'required|string',
                 'desc' => 'required|string',
                 'time.*' => 'required',
-                'cinema_id.*' => 'required',
+                'cinema.*' => 'required',
                 'image' => 'required|image|mimes:jpeg,png,jpg'
             ]);
        
@@ -56,11 +55,17 @@ class CinemaRepository implements CinemaRepositoryInterface{
             for($i = 0; $i < count($validated['time']); $i++){
                 $showtime = new Showtime;
                 $showtime->time = $validated['time'][$i];
-                $showtime->cinema_id = $validated['cinema_id'][$i];
+                $showtime->cinema = $validated['cinema'][$i];
                 $showtime->movie_id = $movie->id;
-                $showtime->save();
+                $show = $showtime->save();
 
             }
+
+            if (count($show) == 0){
+                $movie = Movie::where('id', $movie->id)->first();
+                $movie->delete();
+            }
+            
     
             
     

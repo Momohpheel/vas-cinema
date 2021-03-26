@@ -84,17 +84,21 @@
                 <div class="container">
 
                 <div class="row">
-                @foreach($movies as $movie)
-                    <div class="col-sm-4 one">
-                        <img src="{{$movie->image}}" class="image" width="100%" />
-                        <div class="middle">
-                            <div class="text">{{$movie->name}}</div>
-                            <a href="/movie/showtime/{{$movie->id}}"><div class="texts">Show Details</div></a>
+                @if(count($movies) > 0)
+                    @foreach($movies as $movie)
+                        <div class="col-sm-4 one">
+                            <img src="{{$movie->image}}" class="image" width="100%" />
+                            <div class="middle">
+                                <div class="text">{{$movie->name}}</div>
+                                <a href="/movie/showtime/{{$movie->id}}"><div class="texts">Show Details</div></a>
+                            </div>
+                            <br/>
                         </div>
-                          <br/>
-                    </div>
-                  
-                @endforeach 
+                    
+                    @endforeach 
+                @else
+                    <div>No Movies! <a href="{{route('movie')}}">add movies here</a></div>
+                @endif
                     {{-- <div class="col-sm one">
                     <img src="{{url('storage/images/sample.jpg')}}" class="image" width="100%" />
                         <div class="middle">

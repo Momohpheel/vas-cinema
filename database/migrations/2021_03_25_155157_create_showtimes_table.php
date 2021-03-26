@@ -15,8 +15,7 @@ class CreateShowtimesTable extends Migration
     {
         Schema::create('showtimes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('cinema_id');
-            $table->foreign('cinema_id')->on('cinemas')->references('id');
+            $table->string('cinema');
             $table->unsignedBigInteger('movie_id');
             $table->foreign('movie_id')->on('movies')->references('id');
             $table->timestamp('time');

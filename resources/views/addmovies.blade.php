@@ -68,7 +68,8 @@
                                 </div>
                             </div>
 
-                        @foreach ( $cinemas as $cinema )
+                        
+                        @for($i =0; $i < 3; $i++)
                             <div class="form-group row">
                                
                                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Location') }}</label>
@@ -76,25 +77,32 @@
                                 
                                         <div class="col-md-6">
                                            
-                                            <select name="cinema_id[]" id="inputState" class="form-control">
+                                            <select name="cinema[]" id="inputState" class="form-control">
                                                 <option selected>Choose...</option>
-                                                @foreach ( $cinemas as $cinema )
-                                                    <option value="{{$cinema->id}}">{{$cinema->name.', '.$cinema->location}}</option>
-                                                @endforeach
-                                                
+                                                    <option>Cinema 1</option>
+                                                     <option>Cinema 2</option>
+                                                     <option>Cinema 3</option>
+                                                    
                                             </select>
+                                            
                                         </div>
 
                                         <div class="col-md-6">
                                             <input type="datetime-local" width="20px" name="time[]" class="form-control" id="inputCity">
                                         </div>
+                                        
                                 
 
                                     </div>
 
                             </div>
-                        @endforeach
+                        @endfor
+                      
+                            
+                                    
 
+                            </div>
+                      
                     
                             <button type="submit" class="btn btn-primary float-right btn-lng">
                                     {{ __('Add Movie') }}

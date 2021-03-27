@@ -101,7 +101,7 @@
                     
                     @endforeach 
                 @else
-                    <div>No Movies! <a href="{{route('movie')}}">add movies here</a></div>
+                    <div>No Movies! <a href="{{route('movie')}}">click here to add movies</a></div>
                 @endif
                     {{-- <div class="col-sm one">
                     <img src="{{url('storage/images/sample.jpg')}}" class="image" width="100%" />
